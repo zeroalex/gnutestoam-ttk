@@ -76,7 +76,16 @@ class abil:
 
         self.lateral_processo_botao =  main.get_object('lateral_processo_botao')
         self.lateral_busca_entrada   =  main.get_object('lateral_busca_entrada')
-        self.lateral_busca_botao   =  main.get_object('lateral_busca_botao')
+        self.lateral_busca_botao = main.get_object('lateral_busca_botao')
+        self.lateral_fiscal_label = main.get_object('lateral_fiscal_label')
+        self.lateral_staus_sistema_label = main.get_object('lateral_staus_sistema_label')
+        self.lateral_staus_sistema_progressbar = main.get_object('lateral_staus_sistema_progressbar')
+        
+        
+
+
+
+
         self.incluir_data_entrada=  main.get_object('incluir_data_entrada')
         self.incluir_fiscal_entrada=  main.get_object('incluir_fiscal_entrada')
         self.incluir_hora_entrada=  main.get_object('incluir_hora_entrada')

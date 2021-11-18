@@ -43,27 +43,131 @@
                   <property name="side">bottom</property>
                 </layout>
                 <child>
-                  <object class="ttk.Button" id="lateral_visualizar_botao">
-                    <property name="command" type="command" cbtype="simple">visualizar_termo_lateral</property>
-                    <property name="text" translatable="yes">Visualizar</property>
+                  <object class="ttk.Frame" id="frame66">
+                    <property name="height">200</property>
+                    <property name="width">200</property>
                     <layout manager="pack">
-                      <property name="anchor">e</property>
-                      <property name="expand">false</property>
-                      <property name="propagate">False</property>
+                      <property name="expand">true</property>
+                      <property name="fill">x</property>
+                      <property name="propagate">True</property>
+                      <property name="side">top</property>
+                    </layout>
+                    <child>
+                      <object class="ttk.Button" id="lateral_visualizar_botao">
+                        <property name="command" type="command" cbtype="simple">visualizar_termo_lateral</property>
+                        <property name="text" translatable="yes">Visualizar</property>
+                        <layout manager="pack">
+                          <property name="anchor">e</property>
+                          <property name="expand">false</property>
+                          <property name="propagate">False</property>
+                          <property name="side">right</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Button" id="lateral_processo_botao">
+                        <property name="command" type="command" cbtype="simple">visualizar_processo_lateral</property>
+                        <property name="text" translatable="yes">Processo</property>
+                        <layout manager="pack">
+                          <property name="anchor">n</property>
+                          <property name="expand">false</property>
+                          <property name="propagate">False</property>
+                          <property name="side">right</property>
+                        </layout>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="frame68">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">x</property>
+                  <property name="propagate">True</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Frame" id="frame71">
+                    <property name="height">200</property>
+                    <property name="width">200</property>
+                    <layout manager="pack">
+                      <property name="expand">true</property>
+                      <property name="fill">x</property>
+                      <property name="padx">15</property>
+                      <property name="propagate">True</property>
                       <property name="side">right</property>
                     </layout>
+                    <child>
+                      <object class="ttk.Label" id="label8">
+                        <property name="text" translatable="yes">Status sistema:</property>
+                        <layout manager="pack">
+                          <property name="propagate">True</property>
+                          <property name="side">top</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Progressbar" id="lateral_staus_sistema_progressbar">
+                        <property name="orient">horizontal</property>
+                        <property name="value">10</property>
+                        <layout manager="pack">
+                          <property name="expand">true</property>
+                          <property name="fill">x</property>
+                          <property name="propagate">True</property>
+                          <property name="side">top</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Label" id="lateral_staus_sistema_label">
+                        <property name="text" translatable="yes">Ok</property>
+                        <layout manager="pack">
+                          <property name="propagate">True</property>
+                          <property name="side">top</property>
+                        </layout>
+                      </object>
+                    </child>
                   </object>
                 </child>
                 <child>
-                  <object class="ttk.Button" id="lateral_processo_botao">
-                    <property name="command" type="command" cbtype="simple">visualizar_processo_lateral</property>
-                    <property name="text" translatable="yes">Processo</property>
+                  <object class="ttk.Frame" id="frame72">
+                    <property name="height">200</property>
+                    <property name="width">200</property>
                     <layout manager="pack">
-                      <property name="anchor">n</property>
-                      <property name="expand">false</property>
-                      <property name="propagate">False</property>
-                      <property name="side">right</property>
+                      <property name="propagate">True</property>
+                      <property name="side">left</property>
                     </layout>
+                    <child>
+                      <object class="ttk.Label" id="label19">
+                        <property name="text" translatable="yes">Olá Fiscal:</property>
+                        <layout manager="pack">
+                          <property name="propagate">True</property>
+                          <property name="side">top</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Label" id="label20">
+                        <property name="text" translatable="yes">Nome Fiscal - Matricola</property>
+                        <layout manager="pack">
+                          <property name="propagate">True</property>
+                          <property name="side">top</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Label" id="label21">
+                        <property name="text" translatable="yes">label21</property>
+                        <layout manager="pack">
+                          <property name="propagate">True</property>
+                          <property name="side">top</property>
+                        </layout>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
