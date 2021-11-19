@@ -42,9 +42,10 @@ class Formatadata(object):
 
 
 class abil:
-    def __init__(self, main):
+    def __init__(self, main , usuario):
         
         self.madruga = Model()
+        self.usuario = usuario
         self.mainwindow = main.get_object('principal2')
         self.tab6 = main.get_object('tab6')
         self.incluir_termo = main.get_object('incluir_termo')
@@ -78,6 +79,9 @@ class abil:
         self.lateral_busca_entrada   =  main.get_object('lateral_busca_entrada')
         self.lateral_busca_botao = main.get_object('lateral_busca_botao')
         self.lateral_fiscal_label = main.get_object('lateral_fiscal_label')
+        
+        self.lateral_fiscal_label['text'] = self.usuario[0][0]+" - "+self.usuario[0][1]
+
         self.lateral_staus_sistema_label = main.get_object('lateral_staus_sistema_label')
         self.lateral_staus_sistema_progressbar = main.get_object('lateral_staus_sistema_progressbar')
         

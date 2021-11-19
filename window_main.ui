@@ -151,7 +151,7 @@
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.Label" id="label20">
+                      <object class="ttk.Label" id="lateral_fiscal_label">
                         <property name="text" translatable="yes">Nome Fiscal - Matricola</property>
                         <layout manager="pack">
                           <property name="propagate">True</property>

@@ -126,7 +126,7 @@
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.Entry" id="incluir_empresa_entrada">
+                      <object class="ttk.Entry" id="login_matricula_entry">
                         <property name="textvariable">string:true</property>
                         <layout manager="pack">
                           <property name="anchor">n</property>
@@ -164,7 +164,7 @@
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.Entry" id="entry2">
+                      <object class="ttk.Entry" id="login_senha_entry">
                         <property name="show">•</property>
                         <layout manager="pack">
                           <property name="anchor">s</property>
