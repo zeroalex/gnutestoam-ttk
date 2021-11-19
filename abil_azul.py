@@ -704,6 +704,7 @@ class abil:
                 dado['observacao_multa']=x[12]
                 dado['data_recebimento_multa']=x[13]
                 dado['processo_multa']=x[14]
+                dado['usuario_multa']=x[15]
                 r =requests.post("http://dontpanic.atspace.tv/incluir/upload2.php",data =dado )
 
                 print(r.text)
@@ -754,6 +755,10 @@ class abil:
         
         self.dados_incluir["observacao_multa"]=  self.incluir_observacao_entrada.get("1.0","end-1c")
 
+        usuario = self.lateral_fiscal_label['text']
+
+
+        self.dados_incluir["usuario_multa"] = usuario        
         self.madruga.multa_salvar(self.dados_incluir)
 
         
