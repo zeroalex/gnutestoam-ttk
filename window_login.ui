@@ -127,6 +127,7 @@
                     </child>
                     <child>
                       <object class="ttk.Entry" id="login_matricula_entry">
+                        <property name="text" translatable="yes">50420</property>
                         <property name="textvariable">string:true</property>
                         <layout manager="pack">
                           <property name="anchor">n</property>
@@ -166,6 +167,7 @@
                     <child>
                       <object class="ttk.Entry" id="login_senha_entry">
                         <property name="show">•</property>
+                        <property name="text" translatable="yes">ASDF</property>
                         <layout manager="pack">
                           <property name="anchor">s</property>
                           <property name="expand">true</property>

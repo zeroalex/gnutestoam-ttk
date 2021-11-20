@@ -461,7 +461,7 @@
                                 </child>
                                 <child>
                                   <object class="ttk.Button" id="button1">
-                                    <property name="command" type="command" cbtype="simple">buscar_empresa</property>
+                                    <property name="command" type="command" cbtype="simple">buscar_empresa_pop</property>
                                     <property name="text" translatable="yes">Buscar</property>
                                     <layout manager="pack">
                                       <property name="anchor">n</property>

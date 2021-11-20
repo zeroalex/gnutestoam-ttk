@@ -19,10 +19,6 @@ class App:
 
         self.botao=root.get_object("login_entrar_botao")
 
-
-
-
-
         self.botao.configure(style='primary.Outline.TButton')
 
         self.botao2=root.get_object("login_cancelar_botao")

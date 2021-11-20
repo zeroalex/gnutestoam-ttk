@@ -2,13 +2,22 @@ import tkinter as tk
 import tkinter.ttk as ttk
 import pygubu
 import requests
+import messagebox_custon
 from openpyxl import load_workbook
 from tkinter import PhotoImage
+
 from model import Model
 from ttkbootstrap import Style
 from datetime import date
 
 style = Style(theme='flatly')
+
+
+
+
+
+
+
 
 class Formatadata(object):
     def __init__(self,  data, entrada):
@@ -39,6 +48,33 @@ class Formatadata(object):
             data.reverse()
             self.data= "/".join(data)
 
+
+class Busca:
+    def __init__(self, main):
+        self.mainwindow = main.get_object('busca_empresa_toplevel')
+    def busca(self):
+        print("ksjndkjn")
+
+    def selecionar_item(self,asd):
+        item =self.itens_empresa.selection()[0] 
+
+        empresa= self.itens_empresa.item(item)['values'][0]
+        
+        self.dados_incluir['empresa_multa']=empresa
+
+        local = self.madruga.listar_local_empresa_filtro(empresa)
+        
+        incluir_local=[]
+        
+        self.incluir_local_entrada.select_clear()
+        self.incluir_local_entrada.set("")
+        for x in local:
+            incluir_local.append(x[0]+" | "+x[1])
+        
+        self.incluir_local_entrada.configure(values=incluir_local)
+    def ddd(self):
+        return "asdasd"
+        
 
 
 class abil:
@@ -185,6 +221,7 @@ class abil:
         self.exportar_pendente_checkbox =  main.get_object('exportar_pendente_checkbox')
         self.exportar_cancelado_checkbox =  main.get_object('exportar_cancelado_checkbox')
         self.exportar_recurso_checkbox =  main.get_object('exportar_recurso_checkbox')
+        
 
 
 
@@ -200,8 +237,7 @@ class abil:
         pavilhao = [x[0]for x in dados]
         self.procurar_pavilhao_combobox['values'] =[" "]+ pavilhao
         
-        
-
+        self.win = main
         
         
 
@@ -783,6 +819,25 @@ class abil:
 
         for x in dados:
             self.incluir_empresa_lista.insert('', tk.END, values=x)
+
+
+    def buscar_empresa_pop(self):
+        """
+        ui = pygubu.Builder()
+        ui.add_from_file("window_busca_empresa.ui")        
+        win =ui.get_object("busca_empresa_toplevel")
+        
+        ui.connect_callbacks(Busca(ui))
+
+
+        busca = Busca(ui)
+        """
+
+        resultado = messagebox_custon.buscar_empresa()
+        print(resultado)
+
+
+       
         
     def buscar_infracao(self):
         busca =self.incluir_infracao_entrada.get()        
