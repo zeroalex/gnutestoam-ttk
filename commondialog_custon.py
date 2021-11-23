@@ -31,31 +31,20 @@ class Dialog:
 
     def show(self, **options):
 
-        # update instance options
         for k, v in options.items():
             self.options[k] = v
 
         self._fixoptions()
 
-        # we need a dummy widget to properly process the options
-        # (at least as long as we use Tkinter 1.63)
-        w = Frame(self.master)
-
-        l = Label(self.master, text="bcbcbcbcbcbcbbcbc")
-        w.insert(l)
-
+        master = self.master
+        if master is None:
+            master = _get_temp_root()
         try:
-
-            s = w.tk.call(self.command, *w._options(self.options))
-
-            s = self._fixresult(w, s)
-
+            self._test_callback(master)  # The function below is replaced for some tests.
+            s = master.tk.call(self.command, *master._options(self.options))
+            s = self._fixresult(master, s)
         finally:
+            _destroy_temp_root(master)
 
-            try:
-                # get rid of the widget
-                w.destroy()
-            except:
-                pass
-
+        print(s)
         return s

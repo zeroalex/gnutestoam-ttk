@@ -3,12 +3,14 @@ import tkinter.ttk as ttk
 import pygubu
 import requests
 import messagebox_custon
+import commondialog_custon
 from openpyxl import load_workbook
 from tkinter import PhotoImage
 
 from model import Model
 from ttkbootstrap import Style
 from datetime import date
+
 
 style = Style(theme='flatly')
 
@@ -49,33 +51,159 @@ class Formatadata(object):
             self.data= "/".join(data)
 
 
-class Busca:
-    def __init__(self, main):
-        self.mainwindow = main.get_object('busca_empresa_toplevel')
+class Busca(commondialog_custon.Dialog):
+    def __init__(self, master,dados,**options):
+        
+
+        self.mainwindow = master.get_object('busca_empresa_toplevel')
+        
+        if not master:
+            master = options.get('parent')
+        self.master = master
+        self.options = options
+
+        self.dados = dados
+        self.madruga=Model()
+
+        self.busca_empresa_entry=master.get_object("busca_empresa_entry")
+        self.incluir_empresa_lista =  master.get_object('incluir_empresa_lista')
+        self.itens_empresa =  master.get_object('itens_empresa')
+        self.busca()
+
+
     def busca(self):
-        print("ksjndkjn")
+
+        busca =self.busca_empresa_entry.get()        
+        dados =self.madruga.listar_empresa_filtro(busca)
+        
+
+        remove = self.incluir_empresa_lista.get_children()
+        
+        if remove !=():
+            for x in remove:    
+                self.incluir_empresa_lista.delete(x)
+
+        for x in dados:
+            self.incluir_empresa_lista.insert('', tk.END, values=x)
 
     def selecionar_item(self,asd):
         item =self.itens_empresa.selection()[0] 
 
         empresa= self.itens_empresa.item(item)['values'][0]
         
-        self.dados_incluir['empresa_multa']=empresa
+        self.dados.dados_incluir['empresa_multa']=empresa
 
         local = self.madruga.listar_local_empresa_filtro(empresa)
         
         incluir_local=[]
+        self.dados.incluir_empresa_entrada.delete(0,"end")
         
-        self.incluir_local_entrada.select_clear()
-        self.incluir_local_entrada.set("")
+        self.dados.incluir_empresa_entrada.insert(0,empresa)
+        
+        self.dados.incluir_local_entrada.select_clear()
+        self.dados.incluir_local_entrada.set("")
         for x in local:
             incluir_local.append(x[0]+" | "+x[1])
         
-        self.incluir_local_entrada.configure(values=incluir_local)
-    def ddd(self):
-        return "asdasd"
+        self.dados.incluir_local_entrada.configure(values=incluir_local)
+        self.mainwindow.destroy()
         
 
+
+class Busca_infracao(commondialog_custon.Dialog):
+    
+    def __init__(self, master,dados,**options):
+        
+
+        self.mainwindow = master.get_object('busca_infracao_toplevel')
+        
+        if not master:
+            master = options.get('parent')
+        self.master = master
+        self.options = options
+
+        self.dados = dados
+        self.madruga=Model()
+
+
+        self.incluir_infracao_entrada=master.get_object("incluir_infracao_entrada")
+        
+        self.incluir_infracao_lista =  master.get_object('incluir_infracao_lista')
+        self.infracao_descricao_text =  master.get_object('infracao_descricao_text')
+
+
+        self.itens_infracao =  master.get_object('itens_infracao')
+
+        self.busca()
+
+        
+    def busca(self):
+        busca =self.incluir_infracao_entrada.get()        
+        dados =self.madruga.listar_infracao_filtro(busca)
+        
+
+        remove = self.incluir_infracao_lista.get_children()
+        
+        if remove !=():
+            for x in remove:    
+                self.incluir_infracao_lista.delete(x)
+
+
+        for x in dados:
+            self.incluir_infracao_lista.insert('', tk.END, values=x)
+
+    def selecionar_infracao(self,asd):
+        
+
+        item =self.itens_infracao.selection()[0] 
+        
+        codigo_infracao= self.itens_infracao.item(item)['values'][0]
+        descricao_infracao=self.itens_infracao.item(item)['values'][1]
+        
+
+
+        self.infracao_descricao_text.delete(1.0,"end")
+        self.infracao_descricao_text.insert(1.0,descricao_infracao)
+        
+
+    def selecionar_infracao_fechar(self):
+        item =self.itens_infracao.selection()[0] 
+        
+        codigo_infracao= self.itens_infracao.item(item)['values'][0]
+
+        self.dados.dados_incluir['infracao_multa']=codigo_infracao
+
+        self.dados.incluir_infracao_entrada.delete(0,"end")
+        
+        self.dados.incluir_infracao_entrada.insert(0,codigo_infracao)
+
+
+        self.mainwindow.destroy()
+
+
+
+    def selecionar_item(self,asd):
+        item =self.itens_empresa.selection()[0] 
+
+        empresa= self.itens_empresa.item(item)['values'][0]
+        
+        self.dados.dados_incluir['empresa_multa']=empresa
+
+        local = self.madruga.listar_local_empresa_filtro(empresa)
+        
+        incluir_local=[]
+        self.dados.incluir_empresa_entrada.delete(0,"end")
+        
+        self.dados.incluir_empresa_entrada.insert(0,empresa)
+        
+        self.dados.incluir_local_entrada.select_clear()
+        self.dados.incluir_local_entrada.set("")
+        for x in local:
+            incluir_local.append(x[0]+" | "+x[1])
+        
+        self.dados.incluir_local_entrada.configure(values=incluir_local)
+        self.mainwindow.destroy()
+        
 
 class abil:
     def __init__(self, main , usuario):
@@ -92,15 +220,12 @@ class abil:
 
         self.incluir_local_entrada =  main.get_object('incluir_local_entrada')
         
-        self.incluir_empresa_lista =  main.get_object('incluir_empresa_lista')
-        self.incluir_infracao_lista =  main.get_object('incluir_infracao_lista')
-        self.itens_empresa =  main.get_object('itens_empresa')
+        
+        
 
         self.lateral_termo_item =  main.get_object('lateral_termo_item')
 
-        self.itens_infracao =  main.get_object('itens_infracao')
 
-        self.incluir_infracao_lista =  main.get_object('incluir_infracao_lista')
         self.incluir_empresa_entrada =  main.get_object('incluir_empresa_entrada')
         self.incluir_infracao_entrada =  main.get_object('incluir_infracao_entrada')
         self.incluir_termo_botao =  main.get_object('incluir_termo_botao')
@@ -821,38 +946,25 @@ class abil:
             self.incluir_empresa_lista.insert('', tk.END, values=x)
 
 
+    
     def buscar_empresa_pop(self):
-        """
         ui = pygubu.Builder()
         ui.add_from_file("window_busca_empresa.ui")        
         win =ui.get_object("busca_empresa_toplevel")
         
-        ui.connect_callbacks(Busca(ui))
+        ui.connect_callbacks(Busca(ui,self))
+
+    def buscar_infracao_pop(self):
+        ui = pygubu.Builder()
+        ui.add_from_file("window_busca_infracao.ui")        
+        win =ui.get_object("busca_infracao_toplevel")
+        
+        ui.connect_callbacks(Busca_infracao(ui,self))
 
 
-        busca = Busca(ui)
-        """
-
-        resultado = messagebox_custon.buscar_empresa()
-        print(resultado)
-
+        
 
        
-        
-    def buscar_infracao(self):
-        busca =self.incluir_infracao_entrada.get()        
-        dados =self.madruga.listar_infracao_filtro(busca)
-        
-
-        remove = self.incluir_infracao_lista.get_children()
-        
-        if remove !=():
-            for x in remove:    
-                self.incluir_infracao_lista.delete(x)
-
-
-        for x in dados:
-            self.incluir_infracao_lista.insert('', tk.END, values=x)
         
         
         
@@ -863,6 +975,7 @@ class abil:
         empresa= self.itens_empresa.item(item)['values'][0]
         
         self.dados_incluir['empresa_multa']=empresa
+
 
         local = self.madruga.listar_local_empresa_filtro(empresa)
         
@@ -886,16 +999,6 @@ class abil:
 
         
 
-    def selecionar_infracao(self,asd):
-        
-
-        item =self.itens_infracao.selection()[0] 
-        
-        codigo_infracao= self.itens_infracao.item(item)['values'][0]
-        
-        self.dados_incluir['infracao_multa']=codigo_infracao
-        
-        
 
 
     def selecionar_incluir_data(self,asd):

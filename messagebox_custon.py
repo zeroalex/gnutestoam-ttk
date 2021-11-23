@@ -80,6 +80,7 @@ def _show(title=None, message=None, _icon=None, _type=None, **options):
     
 
     res = Message(**options).show()
+
     
     "A message box"
     # In some Tcl installations, yes/no is converted into a boolean.
@@ -94,6 +95,8 @@ def _show(title=None, message=None, _icon=None, _type=None, **options):
 
 def buscar_empresa(title="Buscar empresa", message="funciona", **options):
     s = _show(title, message, QUESTION, YESNOCANCEL, **options)
+
+    
     # s might be a Tcl index object, so convert it to a string
     s = str(s)
     if s == CANCEL:
