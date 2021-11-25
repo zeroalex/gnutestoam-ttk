@@ -2,7 +2,6 @@ import tkinter as tk
 import tkinter.ttk as ttk
 import pygubu
 import abil_azul
-import requests
 
 from tkinter import PhotoImage
 from model import Model

@@ -1,7 +1,6 @@
 import tkinter as tk
 import tkinter.ttk as ttk
 import pygubu
-import requests
 import messagebox_custon
 import commondialog_custon
 from openpyxl import load_workbook
@@ -239,12 +238,12 @@ class abil:
         self.lateral_processo_botao =  main.get_object('lateral_processo_botao')
         self.lateral_busca_entrada   =  main.get_object('lateral_busca_entrada')
         self.lateral_busca_botao = main.get_object('lateral_busca_botao')
-        self.lateral_fiscal_label = main.get_object('lateral_fiscal_label')
+        #self.lateral_fiscal_label = main.get_object('lateral_fiscal_label')
         
-        self.lateral_fiscal_label['text'] = self.usuario[0][0]+" - "+self.usuario[0][1]
+        #self.lateral_fiscal_label['text'] = self.usuario[0][0]+" - "+self.usuario[0][1]
 
-        self.lateral_staus_sistema_label = main.get_object('lateral_staus_sistema_label')
-        self.lateral_staus_sistema_progressbar = main.get_object('lateral_staus_sistema_progressbar')
+        #self.lateral_staus_sistema_label = main.get_object('lateral_staus_sistema_label')
+        #self.lateral_staus_sistema_progressbar = main.get_object('lateral_staus_sistema_progressbar')
         
         
 
@@ -809,74 +808,6 @@ class abil:
         proximo_termo = termo[0][0].split("/")
         proximo_termo = str(int(proximo_termo[0])+1)+"/"+proximo_termo[1]
         self.incluir_termo_botao['text']= proximo_termo
-
-
-
-        r =requests.get('http://dontpanic.atspace.tv/last.php')
-        termo_online = r.text.strip('\n').split("/")
-        termo_online = int(termo_online[0])
-        termo_local= termo[0][0].split("/")
-        termo_local= int(termo_local[0])
-
-
-        print(termo_online)
-        print(termo_local)
-
-        if r.text ==termo[0][0]:
-            print(r.text)
-        
-        if termo_local>termo_online:
-            self.subir_termos(termo_online)
-        
-        if termo_local<termo_online:
-            self.baixar_termos()
-        
-        """
-        r =requests.get('http://dontpanic.atspace.tv/')
-        dados = r.text.strip('\n').split("!")
-        for x in dados:
-            print(x)
-        dados = self.madruga.listar_multa("")
-        for x in dados:
-            print(x)
-        """
-
-    def subir_termos(self, termo):
-        
-        print("vai subir")
-        print(termo)
-
-        dados = self.madruga.listar_multa_sobe("")
-        for x in dados:
-            ntermo = x[9].split("/")
-            if int(ntermo[0]) > termo:
-                dado = {}
-                dado['empresa_multa']=x[1]
-                dado['infracao_multa']=x[2]
-                dado['local_empresa_multa']=x[3]
-                dado['data_multa']=x[4]
-                dado['valor_multa']=x[5]
-                dado['status_multa']=x[6]
-                dado['local_infracao_multa']=x[7]
-                dado['criado_em_multa']=x[8]
-                dado['termo_multa']=x[9]
-                dado['fiscal_multa']=x[10]
-                dado['hora_multa']=x[11]
-                dado['observacao_multa']=x[12]
-                dado['data_recebimento_multa']=x[13]
-                dado['processo_multa']=x[14]
-                dado['usuario_multa']=x[15]
-                r =requests.post("http://dontpanic.atspace.tv/incluir/upload2.php",data =dado )
-
-                print(r.text)
-                
-                #print(r.url)
-                
-                #print("https://dontpanic.atspace.tv/incluir/upload.php?empresa_multa="+x[1]+"&infracao_multa="+x[2]+"&local_empresa_multa="+x[3]+"&data_multa="+x[4]+"&valor_multa="+x[5]+"&status_multa="+x[6]+"&local_infracao_multa="+x[7]+"&criado_em_multa="+x[8]+"&termo_multa="+x[9]+"&fiscal_multa="+x[10]+"&hora_multa="+x[11]+"&observacao_multa="+x[12]+"&data_recebimento_multa="+x[13]+"&processo_multa="+x[14])
-
-
-    def baixar_termos(self):
-        print("vaidescer")
 
 
 

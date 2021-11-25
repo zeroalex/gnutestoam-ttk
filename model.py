@@ -18,12 +18,21 @@ class Model(Donaclotilde):
 		self.entrada_count=[]
 		self.entrada_where=[]
 		self.query=[]
+		self.banco_dados=[]
 
 
 	def connect_db(self):
 		self.conn = sqlite3.connect('database.db')
 		self.cursor = self.conn.cursor()
-
+	
+	def connect_db_remoto(self, banco = None):
+		print(banco)
+		print("odnfvodnfovndiof odinfoindf oioinfd oi")
+		if banco != None:
+			self.conn = sqlite3.connect(banco)
+			self.cursor = self.conn.cursor()
+		else:
+			print("Erro")
 
 	def multa_salvar(self,kwargs):
 		
@@ -59,10 +68,10 @@ class Model(Donaclotilde):
 		self.from_table("infracao")
 		sql = self.get()
 		data = self.result_list(sql)
+
 		return data
 
 	def listar_infracao_filtro(self,busca):
-		
 
 		self.select('codigo_infracao')
 		self.select('descricao_infracao')
@@ -70,8 +79,12 @@ class Model(Donaclotilde):
 		self.from_table("infracao")
 		if busca:
 			self.where(busca,"descricao_infracao")
-			
+		
+		self.banco('C:/Users/pessoa/Desktop/database.db')
+		
+
 		sql = self.get()
+		self.banco('C:/Users/pessoa/Desktop/database.db')
 		data = self.result_list(sql)
 		return data		
 		pass
