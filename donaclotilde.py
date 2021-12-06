@@ -14,17 +14,11 @@ class Donaclotilde:
         self.banco_dados=[]
 
     def connect_db(self):
-        self.conn = sqlite3.connect('database.db')
+        self.conn = sqlite3.connect('‪Z:/DEPEC/SECME/ADMINISTRATIVO/normas/database.db')
+        #self.conn = sqlite3.connect('database.db')
         self.cursor = self.conn.cursor()
 
 
-    def connect_db_remoto(self, banco = None):
-        print(banco)
-        if banco != None:
-            self.conn = sqlite3.connect(banco)
-            self.cursor = self.conn.cursor()
-        else:
-            print("Erro")
     def banco(self, banco):
 
         self.banco_dados.append(banco)
@@ -99,11 +93,8 @@ class Donaclotilde:
 
     def result_list(self,kwargs):
         sql = kwargs
-        print(self.banco_dados)
-        if self.banco_dados != []:
-            self.connect_db_remoto(self.banco_dados[0])
-        else:
-            self.connect_db()
+        
+        self.connect_db()
 
         self.cursor.execute(sql)
         dados=self.cursor.fetchall()

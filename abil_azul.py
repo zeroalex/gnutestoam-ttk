@@ -1,10 +1,12 @@
 import tkinter as tk
 import tkinter.ttk as ttk
 import pygubu
+
 import messagebox_custon
+
 import commondialog_custon
 from openpyxl import load_workbook
-from tkinter import PhotoImage
+from tkinter import PhotoImage , messagebox
 
 from model import Model
 from ttkbootstrap import Style
@@ -799,6 +801,7 @@ class abil:
 
         
         workbook.save(filename='doc/tnp'+termo+'.xlsx')
+        resposta = messagebox.showinfo("Imprimir Termo", "Arquivo gerado com sucesso!")
         
 
 
@@ -847,12 +850,12 @@ class abil:
         
         self.dados_incluir["observacao_multa"]=  self.incluir_observacao_entrada.get("1.0","end-1c")
 
-        usuario = self.lateral_fiscal_label['text']
+        usuario = "ALEX - 50420"
 
 
         self.dados_incluir["usuario_multa"] = usuario        
-        self.madruga.multa_salvar(self.dados_incluir)
-
+        resposta = self.madruga.multa_salvar(self.dados_incluir)
+        
         
 
 
@@ -860,8 +863,40 @@ class abil:
         termos = self.madruga.buscar_termos()
         self.visulalizar_num_termo_spin['values']=termos        
         self.carregar_numero_termo_incluir()
-       
+        
+        self.pop_multa_cadastrada(resposta)
+
         pass
+    def pop_multa_cadastrada(self, resposta):
+
+        if resposta == True:
+            resposta = messagebox.showinfo("Cadastro Termo", "Termo cadastrado com sucesso")
+            self.cadastrar_multa_apagar_dados()
+        else:
+            resposta = messagebox.showwarning("Cadastro Termo", "Cuidado, esta notificação já existe -" + resposta[0][0])
+            
+    def cadastrar_multa_apagar_dados(self):
+        self.incluir_empresa_entrada.delete(0,"end")
+
+        self.incluir_local_entrada.select_clear()
+        
+        self.incluir_local_entrada.set("")
+        
+        self.incluir_fiscal_entrada.set("")
+
+        incluir_local=[]
+        self.incluir_local_entrada.configure(values=incluir_local)
+        
+        self.incluir_data_entrada.delete(0,"end")
+
+        self.incluir_hora_entrada.delete(0,"end")
+
+        self.incluir_observacao_entrada.delete(1.0,"end")
+        self.incluir_infracao_entrada.delete(0,"end")
+        self.incluir_local_infracao_entrada.delete(0,"end")
+
+
+
     def buscar_empresa(self):
         busca =self.incluir_empresa_entrada.get()        
         dados =self.madruga.listar_empresa_filtro(busca)

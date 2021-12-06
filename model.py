@@ -18,21 +18,13 @@ class Model(Donaclotilde):
 		self.entrada_count=[]
 		self.entrada_where=[]
 		self.query=[]
-		self.banco_dados=[]
 
 
 	def connect_db(self):
-		self.conn = sqlite3.connect('database.db')
+		self.conn = sqlite3.connect('Z:/DEPEC/SECME/ADMINISTRATIVO/normas/database.db')
+		#self.conn = sqlite3.connect('database.db')
 		self.cursor = self.conn.cursor()
 	
-	def connect_db_remoto(self, banco = None):
-		print(banco)
-		print("odnfvodnfovndiof odinfoindf oioinfd oi")
-		if banco != None:
-			self.conn = sqlite3.connect(banco)
-			self.cursor = self.conn.cursor()
-		else:
-			print("Erro")
 
 	def multa_salvar(self,kwargs):
 		
@@ -51,7 +43,32 @@ class Model(Donaclotilde):
 
 		sql = self.set("cadastro_multa",valores,colunas)
 		#print(sql)
-		self.insert(sql)
+		verifica = self.buscar_multa_repetida(kwargs)
+		
+		if verifica != []:
+			return verifica
+		else:
+			self.insert(sql)
+			return True
+
+
+	def buscar_multa_repetida(self,dados):
+		
+		self.select('termo_multa')
+		self.from_table("cadastro_multa")
+
+		self.where(dados['empresa_multa'],"empresa_multa","=")
+		
+		self.where_combining(dados['infracao_multa'],"infracao_multa","AND","=")
+		self.where_combining(dados['data_multa'],"data_multa","AND","=")
+		
+		sql = self.get()
+		data = self.result_list(sql)
+		
+		print(data)
+
+		return data
+
 
 	def listall(self):
 
@@ -80,11 +97,8 @@ class Model(Donaclotilde):
 		if busca:
 			self.where(busca,"descricao_infracao")
 		
-		self.banco('C:/Users/pessoa/Desktop/database.db')
-		
 
 		sql = self.get()
-		self.banco('C:/Users/pessoa/Desktop/database.db')
 		data = self.result_list(sql)
 		return data		
 		pass
