@@ -21,8 +21,8 @@ class Model(Donaclotilde):
 
 
 	def connect_db(self):
-		self.conn = sqlite3.connect('Z:/DEPEC/SECME/ADMINISTRATIVO/normas/database.db')
-		#self.conn = sqlite3.connect('database.db')
+		#self.conn = sqlite3.connect('Z:/DEPEC/SECME/ADMINISTRATIVO/normas/database.db')
+		self.conn = sqlite3.connect('database.db')
 		self.cursor = self.conn.cursor()
 	
 
