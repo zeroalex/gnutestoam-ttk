@@ -13,7 +13,6 @@ from ttkbootstrap import Style
 from datetime import date
 
 
-style = Style(theme='flatly')
 
 
 

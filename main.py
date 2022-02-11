@@ -6,7 +6,7 @@ import abil_azul
 from tkinter import PhotoImage
 from model import Model
 from ttkbootstrap import Style
-style = Style(theme='flatly')
+style = Style(theme='litera')
 
 
 
