@@ -6,7 +6,7 @@ import abil_azul
 from tkinter import PhotoImage
 from model import Model
 from ttkbootstrap import Style
-style = Style(theme='litera')
+style = Style(theme='superhero')
 
 
 
@@ -16,12 +16,12 @@ class App:
         self.janela = root.get_object("login")
         
 
-        self.botao=root.get_object("login_entrar_botao")
+        #self.botao=root.get_object("login_entrar_botao")
 
-        self.botao.configure(style='primary.Outline.TButton')
+        #self.botao.configure(style='primary.Outline.TButton')
 
-        self.botao2=root.get_object("login_cancelar_botao")
-        self.botao2.configure(style='primary.TButton')
+        #self.botao2=root.get_object("login_cancelar_botao")
+        #self.botao2.configure(style='primary.TButton')
         
         self.logo=root.get_object("logo")
         self.logo_img = PhotoImage(name='logo',file='img/logo.png')
@@ -29,15 +29,18 @@ class App:
         self.logo['image']=self.logo_img
        
 
-        self.login_matricula_entry=root.get_object("login_matricula_entry")
-        self.login_senha_entry=root.get_object("login_senha_entry")
-        self.cvar="asd"
+        #self.login_matricula_entry=root.get_object("login_matricula_entry")
+        #self.login_senha_entry=root.get_object("login_senha_entry")
+        #self.cvar="asd"
 
         
 
     def logar(self):
-        matricola = self.login_matricula_entry.get()
-        senha = self.login_senha_entry.get()
+        
+        #Mudar para coletar usuario da máquina 
+        
+        matricola = "50420"
+        senha = "ASDF"
 
 
         self.usuario = self.madruga.buscar_usuario(matricola,senha)
@@ -52,6 +55,9 @@ class App:
 
         
         win =ui.get_object("principal2")
+        win.master.title("OAM | Alex Odisseus - SECME")
+        win.master.geometry('900x750')
+        win.master.geometry('+20+20')
         
         self.janela_quit()
         ui.connect_callbacks(abil_azul.abil(ui,self.usuario))

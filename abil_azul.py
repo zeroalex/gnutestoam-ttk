@@ -364,7 +364,7 @@ class abil:
         
         self.win = main
         
-        
+        self.buscar_infracao_lateral()
 
 
 
@@ -977,7 +977,7 @@ class abil:
 
     def visualizar_termo_lateral(self):
         #abre a tab de visualizar
-        self.incluir_termo.select(self.incluir_termo.tabs()[1])
+        self.incluir_termo.select(self.incluir_termo.tabs()[2])
         #coloca o termo selecionadop no spin de visualizar
 
         self.visulalizar_num_termo_spin.set(self.lateral_termo)
@@ -987,7 +987,7 @@ class abil:
 
     def visualizar_processo_lateral(self):
         #abre a tab de processo
-        self.incluir_termo.select(self.incluir_termo.tabs()[2])
+        self.incluir_termo.select(self.incluir_termo.tabs()[3])
 
 
 
