@@ -2,9 +2,6 @@ import tkinter as tk
 import tkinter.ttk as ttk
 import pygubu
 
-import messagebox_custon
-
-import commondialog_custon
 from openpyxl import load_workbook
 from tkinter import PhotoImage , messagebox
 
@@ -51,7 +48,7 @@ class Formatadata(object):
             self.data= "/".join(data)
 
 
-class Busca(commondialog_custon.Dialog):
+class Busca():
     def __init__(self, master,dados,**options):
         
 
@@ -110,7 +107,7 @@ class Busca(commondialog_custon.Dialog):
         
 
 
-class Busca_infracao(commondialog_custon.Dialog):
+class Busca_infracao():
     
     def __init__(self, master,dados,**options):
         
@@ -646,7 +643,7 @@ class abil:
 
         #numero termo
 
-        termo = termo.rstrip("2021")
+        termo = termo.rstrip("2022")
         termo = termo.rstrip("/")
         sheet["AB2"] = termo
         
@@ -756,7 +753,7 @@ class abil:
         
         
 
-        if reincidencia == "0":
+        if reincidencia == "0" and peso != "gravissima":
             sheet["B30"] = "X"
         if reincidencia == "1":
             sheet["B32"] = "X"
@@ -766,8 +763,9 @@ class abil:
             sheet["F34"] = "X"
         if reincidencia == "4":
             sheet["j343"] = "X"
-        if int(reincidencia) > 4:
+        if int(reincidencia) > 4 or peso == "gravissima":
             sheet["B36"] = "X"
+            sheet["w36"] = "3"
 
 
         #fiscal imprimir 
@@ -793,13 +791,11 @@ class abil:
         if reincidencia == "5":
             sheet["w36"] = "3"
         
-        #terminar esse quando tiver tempo valor da multa
-        #se reikncidencia = 2 entao h32 , se for 3,4,5 é x43
-
+        
         
 
         
-        workbook.save(filename='doc/tnp'+termo+'.xlsx')
+        workbook.save(filename='doc/tnp'+termo+'-2022.xlsx')
         resposta = messagebox.showinfo("Imprimir Termo", "Arquivo gerado com sucesso!")
         
 

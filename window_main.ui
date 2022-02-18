@@ -499,6 +499,9 @@
                               <property name="fill">x</property>
                               <property name="side">left</property>
                             </layout>
+                            <containerlayout manager="pack">
+                              <property name="propagate">False</property>
+                            </containerlayout>
                             <child>
                               <object class="ttk.Frame" id="frame11">
                                 <property name="height">200</property>
@@ -557,7 +560,6 @@
                                 <layout manager="pack">
                                   <property name="expand">true</property>
                                   <property name="fill">x</property>
-                                  <property name="pady">10</property>
                                   <property name="side">top</property>
                                 </layout>
                                 <child>
@@ -588,7 +590,6 @@
                                 <layout manager="pack">
                                   <property name="expand">true</property>
                                   <property name="fill">x</property>
-                                  <property name="pady">10</property>
                                   <property name="side">top</property>
                                 </layout>
                                 <child>
@@ -620,7 +621,6 @@
                                 <layout manager="pack">
                                   <property name="expand">true</property>
                                   <property name="fill">x</property>
-                                  <property name="pady">10</property>
                                   <property name="side">top</property>
                                 </layout>
                                 <child>
@@ -657,6 +657,9 @@
                               <property name="fill">x</property>
                               <property name="side">left</property>
                             </layout>
+                            <containerlayout manager="pack">
+                              <property name="propagate">False</property>
+                            </containerlayout>
                             <child>
                               <object class="ttk.Labelframe" id="labelframe9">
                                 <property name="height">200</property>
@@ -665,8 +668,6 @@
                                 <property name="width">2000</property>
                                 <layout manager="pack">
                                   <property name="anchor">n</property>
-                                  <property name="expand">true</property>
-                                  <property name="fill">x</property>
                                   <property name="padx">10</property>
                                   <property name="side">right</property>
                                 </layout>
@@ -957,7 +958,7 @@
                         <child>
                           <object class="ttk.Frame" id="frame32">
                             <layout manager="pack">
-                              <property name="anchor">se</property>
+                              <property name="anchor">n</property>
                               <property name="expand">true</property>
                               <property name="fill">x</property>
                               <property name="pady">5</property>
@@ -975,7 +976,7 @@
                                 </layout>
                                 <child>
                                   <object class="tk.Text" id="visualizar_descricao_mesage">
-                                    <property name="height">7</property>
+                                    <property name="height">5</property>
                                     <property name="text" translatable="yes">Descrição</property>
                                     <property name="width">30</property>
                                     <layout manager="pack">
@@ -999,12 +1000,12 @@
                                 <child>
                                   <object class="ttk.Frame" id="frame37">
                                     <property name="height">200</property>
-                                    <property name="padding">5</property>
                                     <property name="width">200</property>
                                     <layout manager="pack">
                                       <property name="anchor">w</property>
                                       <property name="expand">true</property>
                                       <property name="fill">x</property>
+                                      <property name="padx">5</property>
                                       <property name="side">top</property>
                                     </layout>
                                     <child>
@@ -1023,12 +1024,12 @@
                                 <child>
                                   <object class="ttk.Frame" id="frame38">
                                     <property name="height">200</property>
-                                    <property name="padding">5</property>
                                     <property name="width">200</property>
                                     <layout manager="pack">
                                       <property name="anchor">n</property>
                                       <property name="expand">true</property>
                                       <property name="fill">x</property>
+                                      <property name="padx">5</property>
                                       <property name="side">top</property>
                                     </layout>
                                     <child>
@@ -1046,12 +1047,12 @@
                                 <child>
                                   <object class="ttk.Frame" id="frame39">
                                     <property name="height">200</property>
-                                    <property name="padding">5</property>
                                     <property name="width">200</property>
                                     <layout manager="pack">
                                       <property name="anchor">n</property>
                                       <property name="expand">true</property>
                                       <property name="fill">x</property>
+                                      <property name="padx">5</property>
                                       <property name="side">top</property>
                                     </layout>
                                     <child>
@@ -1070,12 +1071,12 @@
                                 <child>
                                   <object class="ttk.Frame" id="frame21">
                                     <property name="height">200</property>
-                                    <property name="padding">5</property>
                                     <property name="width">200</property>
                                     <layout manager="pack">
                                       <property name="anchor">n</property>
                                       <property name="expand">true</property>
                                       <property name="fill">x</property>
+                                      <property name="padx">5</property>
                                       <property name="side">top</property>
                                     </layout>
                                     <child>

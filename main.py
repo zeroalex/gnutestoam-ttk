@@ -56,8 +56,8 @@ class App:
         
         win =ui.get_object("principal2")
         win.master.title("OAM | Alex Odisseus - SECME")
-        win.master.geometry('900x750')
-        win.master.geometry('+20+20')
+        win.master.geometry('900x1150')
+        win.master.geometry('+1+1')
         
         self.janela_quit()
         ui.connect_callbacks(abil_azul.abil(ui,self.usuario))
