@@ -148,11 +148,11 @@ class Model(Donaclotilde):
 		
 		self.select('termo_multa')	
 		self.select('infracao_multa')	
+		self.select('data_multa')
 		self.select('empresa_multa')
-		
 		self.select('status_multa')
 		self.select('local_empresa_multa')
-		self.select('data_multa')
+		
 		self.select('fiscal_multa')
 		
 		#self.select('criado_em_multa')

@@ -18,10 +18,10 @@ class App:
 
         #self.botao=root.get_object("login_entrar_botao")
 
-        #self.botao.configure(style='primary.Outline.TButton')
+        #self.botao.configure(style='success.Outline.TButton')
 
-        #self.botao2=root.get_object("login_cancelar_botao")
-        #self.botao2.configure(style='primary.TButton')
+        self.botao2=root.get_object("login_cancelar_botao")
+        self.botao2.configure(style='primary.TButton')
         
         self.logo=root.get_object("logo")
         self.logo_img = PhotoImage(name='logo',file='img/logo.png')

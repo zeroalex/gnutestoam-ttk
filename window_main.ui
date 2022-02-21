@@ -92,20 +92,6 @@
                                     </containerlayout>
                                   </object>
                                 </child>
-                                <child>
-                                  <object class="ttk.Button" id="lateral_processo_botao">
-                                    <property name="command" type="command" cbtype="simple">visualizar_processo_lateral</property>
-                                    <property name="text" translatable="yes">Processo</property>
-                                    <layout manager="pack">
-                                      <property name="anchor">n</property>
-                                      <property name="expand">false</property>
-                                      <property name="side">right</property>
-                                    </layout>
-                                    <containerlayout manager="grid">
-                                      <property name="propagate">False</property>
-                                    </containerlayout>
-                                  </object>
-                                </child>
                               </object>
                             </child>
                           </object>
@@ -209,11 +195,23 @@
                                     <property name="column_anchor">w</property>
                                     <property name="heading_anchor">w</property>
                                     <property name="minwidth">100</property>
+                                    <property name="stretch">false</property>
+                                    <property name="text" translatable="yes">Data</property>
+                                    <property name="tree_column">false</property>
+                                    <property name="visible">true</property>
+                                    <property name="width">100</property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Treeview.Column" id="empresa">
+                                    <property name="column_anchor">w</property>
+                                    <property name="heading_anchor">w</property>
+                                    <property name="minwidth">20</property>
                                     <property name="stretch">true</property>
                                     <property name="text" translatable="yes">Empresa</property>
                                     <property name="tree_column">false</property>
                                     <property name="visible">true</property>
-                                    <property name="width">100</property>
+                                    <property name="width">200</property>
                                   </object>
                                 </child>
                               </object>

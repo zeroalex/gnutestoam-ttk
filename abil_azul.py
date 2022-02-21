@@ -233,7 +233,6 @@ class abil:
 
         #secçao para incluir termos
 
-        self.lateral_processo_botao =  main.get_object('lateral_processo_botao')
         self.lateral_busca_entrada   =  main.get_object('lateral_busca_entrada')
         self.lateral_busca_botao = main.get_object('lateral_busca_botao')
         #self.lateral_fiscal_label = main.get_object('lateral_fiscal_label')
@@ -262,7 +261,6 @@ class abil:
         self.incluir_fiscal_entrada['values'] = fiscal_nome
 
 
-        self.lateral_processo_botao.configure(style='warning.TButton') 
         self.lateral_visualizar_botao =  main.get_object('lateral_visualizar_botao')
         
 
@@ -1000,6 +998,9 @@ class abil:
         #print(dir(self.tree))
 
         for x in dados:
+            
+            data = Formatadata(x[2],'db')
+            x[2]= data.data
             self.tree.insert('', tk.END, values=x)
     
     
