@@ -677,6 +677,11 @@ class abil:
             sheet["B10"] = lugar[0]
             sheet["Y10"] = lugar[1]
 
+        if "VAGA" in local:
+            lugar = local.split("|")
+            sheet["B10"] = lugar[0]
+            sheet["Y10"] = lugar[1]
+
             #data = Formatadata(x[5],'db')
             #x[5]= data.data
 

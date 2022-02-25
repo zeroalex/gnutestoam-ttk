@@ -39,11 +39,11 @@ class App:
         
         #Mudar para coletar usuario da máquina 
         
-        matricola = "50420"
+        matricula = "50420"
         senha = "ASDF"
 
 
-        self.usuario = self.madruga.buscar_usuario(matricola,senha)
+        self.usuario = self.madruga.buscar_usuario(matricula,senha)
         usuario = self.usuario
         
         if self.usuario !=[]:
