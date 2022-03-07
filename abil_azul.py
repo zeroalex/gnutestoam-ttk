@@ -205,7 +205,11 @@ class Busca_infracao():
 class abil:
     def __init__(self, main , usuario):
         
-        self.madruga = Model()
+
+
+        self.madruga = Model(usuario)
+
+        print(usuario)
         self.usuario = usuario
         self.mainwindow = main.get_object('principal2')
         self.tab6 = main.get_object('tab6')

@@ -8,9 +8,10 @@ import sqlite3
 
 class Model(Donaclotilde):
 	"""docstring for Model"""
-	def __init__(self):
+	def __init__(self , data_local = None):
 		#super(Model, self).__init__()
 		#self.arg = argi
+		self.data_local = data_local
 		self.usuario="defalt"
 		self.entrada_select=[]
 		self.entrada_from_table=[]
@@ -22,8 +23,15 @@ class Model(Donaclotilde):
 
 	def connect_db(self):
 		#self.conn = sqlite3.connect('Z:/DEPEC/SECME/ADMINISTRATIVO/normas/database.db')
-		self.conn = sqlite3.connect('database.db')
-		self.cursor = self.conn.cursor()
+		
+		if self.data_local == None or self.data_local == '':
+			
+			self.conn = sqlite3.connect('database.db')
+			self.cursor = self.conn.cursor()			
+
+		else:
+			self.conn = sqlite3.connect(self.data_local)
+			self.cursor = self.conn.cursor()
 	
 
 	def multa_salvar(self,kwargs):

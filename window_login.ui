@@ -111,6 +111,28 @@
                   <property name="side">top</property>
                 </layout>
                 <child>
+                  <object class="ttk.Frame" id="frame2">
+                    <layout manager="pack">
+                      <property name="anchor">se</property>
+                      <property name="expand">true</property>
+                      <property name="fill">x</property>
+                      <property name="pady">5</property>
+                      <property name="side">top</property>
+                    </layout>
+                    <child>
+                      <object class="ttk.Menubutton" id="botao_seleciona_db">
+                        <property name="text" translatable="yes">data base - local</property>
+                        <bind sequence="&lt;1&gt;" handler="selecionar_db" add="" />
+                        <layout manager="pack">
+                          <property name="expand">true</property>
+                          <property name="fill">x</property>
+                          <property name="side">top</property>
+                        </layout>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
                   <object class="ttk.Frame" id="frame8">
                     <layout manager="pack">
                       <property name="anchor">se</property>

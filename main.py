@@ -3,7 +3,8 @@ import tkinter.ttk as ttk
 import pygubu
 import abil_azul
 
-from tkinter import PhotoImage
+from tkinter import PhotoImage, filedialog
+
 from model import Model
 from ttkbootstrap import Style
 style = Style(theme='superhero')
@@ -12,7 +13,7 @@ style = Style(theme='superhero')
 
 class App:
     def __init__(self, root):
-        self.madruga = Model()
+            
         self.janela = root.get_object("login")
         
 
@@ -27,7 +28,9 @@ class App:
         self.logo_img = PhotoImage(name='logo',file='img/logo.png')
        
         self.logo['image']=self.logo_img
-       
+        
+        self.botao_seleciona_db = root.get_object("botao_seleciona_db")
+        self.database = ''
 
         #self.login_matricula_entry=root.get_object("login_matricula_entry")
         #self.login_senha_entry=root.get_object("login_senha_entry")
@@ -37,18 +40,34 @@ class App:
 
     def logar(self):
         
-        #Mudar para coletar usuario da máquina 
+        '''Mudar para coletar usuario da máquina 
         
-        matricula = "50420"
+        matricula = "5042"
         senha = "ASDF"
-
-
+        
         self.usuario = self.madruga.buscar_usuario(matricula,senha)
         usuario = self.usuario
+        '''
+        self.usuario=''
         
-        if self.usuario !=[]:
-            self.carregar_sistema()
+            
+
+        self.carregar_sistema()
+
+
+
+    def selecionar_db(self,asd):
         
+        filename = filedialog.askopenfilename(title = "Select a File",
+                                        filetypes = (("Database",
+                                                        "*.db*"),
+                                                    ("all files",
+                                                        "*.*")))
+    
+        self.database = filename
+        self.botao_seleciona_db["text"]= filename
+
+        pass    
     def carregar_sistema(self):
         ui = pygubu.Builder()
         ui.add_from_file("window_main.ui")
@@ -60,6 +79,7 @@ class App:
         win.master.geometry('+1+1')
         
         self.janela_quit()
+        self.usuario = self.database
         ui.connect_callbacks(abil_azul.abil(ui,self.usuario))
 
 
