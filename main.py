@@ -7,7 +7,7 @@ from tkinter import PhotoImage, filedialog
 
 from model import Model
 from ttkbootstrap import Style
-style = Style(theme='superhero')
+style = Style(theme='flatly')
 
 
 
