@@ -209,7 +209,6 @@ class abil:
 
         self.madruga = Model(usuario)
 
-        print(usuario)
         self.usuario = usuario
         self.mainwindow = main.get_object('principal2')
         self.tab6 = main.get_object('tab6')
@@ -598,7 +597,8 @@ class abil:
 
 
         historico_reincidencia = self.madruga.buscar_reincidencia_historico(dados[0][0], dados[0][1], dados[0][2], self.visualizar_empresa_status , self.visualizar_infracao_status )
-
+        #print(historico_reincidencia)
+        
         remove = self.visualizar_historico_treview.get_children()
         if remove !=():
             for x in remove:    
@@ -754,7 +754,13 @@ class abil:
 
 
         reincidencia = self.madruga.buscar_reincidencia(dados[0][0], dados[0][1], dados[0][2])
-        
+        conta = 62
+        for x in reincidencia:
+            data = Formatadata(x[2], 'db')
+            sheet["D"+str(conta)] = x[4] + " - " + data.data
+            conta+=1
+
+        #breakpoint()
         reincidencia = str(len(reincidencia))
 
         
@@ -769,7 +775,7 @@ class abil:
         if reincidencia == "3":
             sheet["F34"] = "X"
         if reincidencia == "4":
-            sheet["j343"] = "X"
+            sheet["j34"] = "X"
         if int(reincidencia) > 4 or peso == "gravissima":
             sheet["B36"] = "X"
             sheet["w36"] = "3"
@@ -804,6 +810,8 @@ class abil:
         
         workbook.save(filename='doc/tnp'+termo+'-2022.xlsx')
         resposta = messagebox.showinfo("Imprimir Termo", "Arquivo gerado com sucesso!")
+
+
         
 
 
