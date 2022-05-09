@@ -754,7 +754,7 @@ class abil:
 
 
         reincidencia = self.madruga.buscar_reincidencia(dados[0][0], dados[0][1], dados[0][2])
-        conta = 62
+        conta = 57
         for x in reincidencia:
             data = Formatadata(x[2], 'db')
             sheet["D"+str(conta)] = x[4] + " - " + data.data
