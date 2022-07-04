@@ -271,9 +271,15 @@ class Model(Donaclotilde):
 		self.where_combining("Pendente","status_multa", "AND", "<>")
 		self.where_combining("Recurso","status_multa", "AND", "<>")
 		
-		#modificar query para calcular 1 ano
 		self.where_combining(data,"data_multa", "AND", "<")
-
+		
+		#calculo de 1 ano anterior
+		
+		data = data.split("-")
+		data[0] = str(int(data[0])-1)
+		data_ano = "-".join(data)
+		
+		self.where_combining(data_ano,"data_multa", "AND", ">")
 
 		sql = self.get()
 		data = self.result_list(sql)
