@@ -520,9 +520,18 @@ class abil:
 
         calculo_reincidencia = self.madruga.calcular_reincidencia(str(len(reincidencia)), dados_norma[0][0])
 
-
-        self.visualizar_recomendacao_label['text'] = calculo_reincidencia[0][0] +" - UFESP: "+calculo_reincidencia[0][1]+" - Valor: "+calculo_reincidencia[0][2]
-        self.visualizar_recomendacao_label.configure(style='success.Inverse.TLabel')
+        print(str(len(reincidencia)))
+        
+        print(calculo_reincidencia)
+        
+        if calculo_reincidencia != []:
+            self.visualizar_recomendacao_label['text'] = calculo_reincidencia[0][0] +" - UFESP: "+calculo_reincidencia[0][1]+" - Valor: "+calculo_reincidencia[0][2]
+            self.visualizar_recomendacao_label.configure(style='success.Inverse.TLabel')
+        else:
+            if len(reincidencia) > 5:
+                self.visualizar_recomendacao_label['text'] = "Suspensão 3 dias - UFESP: 0 - Valor: 0"
+                self.visualizar_recomendacao_label.configure(style='success.Inverse.TLabel')
+            
 
         if dados[0][11] != None:
             self.processo_emissao_data_entry.delete(0,"end") 
